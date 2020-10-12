@@ -1,4 +1,5 @@
 
+
 # Evaluation of current filtering languages
 
 *This document use Mermaid graphs. A supporting browser plugin is required.
@@ -48,13 +49,11 @@ sequenceDiagram
 Query Language allows the web client to hide the underlying storage query, with and standard way to retrieve data regardless of the way data is stored. 
 
 There are many query languages that are widely used in Web development we will evaluate 6 more popularly:
-
-•	FIQL
-•	RQL
-•	RDF
-•	OData
-•	GData
-•	GraphQL
+- FIQL
+- RDF
+- OData
+- GData
+- GraphQL
 
 ### Feed Item Query Language - FIQL
 Developed by  Internet Engineering Task Force (IETF) Once of the oldest query languages(2007), IETF replaced this language with RQL but still supported by RQL as a grammar alternative.
@@ -102,19 +101,21 @@ Operation|Operator| Example
 **Not present in in FIQL*
 
 #### Pros:
-•	Simple and flexible
-•	Tested to work well with NoSQL queries.
-•	Lot of documentation, forum, etc.
-•	Widely used, there are many libraries Server/Client side implementing RQL
+-	Simple and flexible
+-	Tested to work well with NoSQL queries.
+-	Lot of documentation, forum, etc.
+-	Widely used, there are many libraries Server/Client side implementing RQL
 
 #### Cons:
-•	Language supports different notations, in our example, these 3 queries are the same but written in different formats
+-	Language supports different notations, in our example, these 3 queries are the same but written in different formats
+```
 foo=3&price=lt=10 //Legacy FIQL grammar
 eq(foo,3)&lt(price,10) //RQL grammar
 and(eq(foo,3),lt(price,10)) // normalized form (function like) grammar
+```
 But we can choose one grammar.
-•	Originally designed to NoSQL DB, but can be adapted to RQL with some limitations like sub-attributes.
-•	While there are libraries in almost all languages GoLang implementation is not that many, and most translate only to NonSql, other types of the store need to be implemented.
+-	Originally designed to NoSQL DB, but can be adapted to RQL with some limitations like sub-attributes.
+-	While there are libraries in almost all languages GoLang implementation is not that many, and most translate only to NonSql, other types of the store need to be implemented.
 
 
 ### Open Data Protocol (OData)
@@ -150,17 +151,17 @@ Precedence grouping	|`( )`	|`(Price sub 5) gt 10`
 Also provides more than functions that cover Collection, String, Date and Time, Arithmetic, Type, Geo, and Conditional Functions, see specification for more detail.  
 
 #### Pros:
-•	Is an ISO standard
-•	API is very complex, but filtering is simple enough 
-•	large list of functions supported from date time to geo-spacial
-•	Aggregation is supported as an extension of the language
-•	Not limited to relational DB
-•	Also many libraries implementing in many languages including Python and C but the GoLang support seems limited
+-	Is an ISO standard
+-	API is very complex, but filtering is simple enough 
+-	large list of functions supported from date time to geo-spacial
+-	Aggregation is supported as an extension of the language
+-	Not limited to relational DB
+-	Also many libraries implementing in many languages including Python and C but the GoLang support seems limited
 
 #### Cons:
-•	While we can limit the list of functions supported there are some that may be difficult to implement.
-•	Not as widely used as RQL
-•	there is no official GoLang library but there is some third party that is in the development process, most likely will require to modify one of those.
+-	While we can limit the list of functions supported there are some that may be difficult to implement.
+-	Not as widely used as RQL
+-	there is no official GoLang library but there is some third party that is in the development process, most likely will require to modify one of those.
 
 ### GData
 
@@ -206,17 +207,17 @@ Or	|`,`	|`country==United%20States,browser==Firefox`
 
 
 #### Pros:
-•	Very simple
-•	Documentation is reduced ad not well structured.
-•	Google implements client in many languages including Python, but the server-side is not clear
-•	Regular expressions operators improve the filter allowing complex filters
+-	Very simple
+-	Documentation is reduced ad not well structured.
+-	Google implements client in many languages including Python, but the server-side is not clear
+-	Regular expressions operators improve the filter allowing complex filters
 
 #### Cons:
-•	Seems not popular outside Google and is changing to a new API in Google
-•	New version Api seems oriented to support POST queries and not GET queries
-•	No GoGlang or C client library
-•	Regular expressions required to be passed by the client, so someone needs to generate the Regular expressions, the client, or the final user, last option will make API very hard for the final user.
-•	Time range is not handled by the filter instead GData defines 2 specific fields for that start-date and end_date
+-	Seems not popular outside Google and is changing to a new API in Google
+-	New version Api seems oriented to support POST queries and not GET queries
+-	No GoGlang or C client library
+-	Regular expressions required to be passed by the client, so someone needs to generate the Regular expressions, the client, or the final user, last option will make API very hard for the final user.
+-	Time range is not handled by the filter instead GData defines 2 specific fields for that start-date and end_date
 ```
   &start-date=7daysAgo
   &end-date=yesterday
@@ -253,13 +254,13 @@ fragment friendFields on User {
 }
 ```
 #### Pros:
-•	Query by example syntax makes it very easy to use
-•	Has nice features like Fragments, Alias, Variables, mutations, etc.
-•	Has support for GoLang, Python, and C++
-•	Good documentation, examples forums, etc.
+-	Query by example syntax makes it very easy to use
+-	Has nice features like Fragments, Alias, Variables, mutations, etc.
+-	Has support for GoLang, Python, and C++
+-	Good documentation, examples forums, etc.
 #### Cons:
-•	Is “Query by Example” that means potentially we need to pass a large amount of data in the request what makes it more suitable for POST than GET
-•	While it has some nice features is not clear how to support a basic operation like >, <, COUNT, MIN, MAX, etc.
+-	Is “Query by Example” that means potentially we need to pass a large amount of data in the request what makes it more suitable for POST than GET
+-	While it has some nice features is not clear how to support a basic operation like >, <, COUNT, MIN, MAX, etc.
 
 ### Advanced features
 There are some advanced features required for device service model
@@ -337,13 +338,13 @@ type SearchQuery {
 ## Conclusion
 Each protocol has its pros and cons we need to choose the one that is better for our requirements and can allow us to grow in the future, by example
 
-IFQL and RQL are very popular and well documented but most likely we will find limitations in the protocol, also is very hard that these protocols get an update in the future.
+- IFQL and RQL are very popular and well documented but most likely we will find limitations in the protocol, also is very hard that these protocols get an update in the future.
 
-OData is very complex and tries to cover every little need but because there is no Golang library we will need to modify existing libraries. Being a new ISO standard may help the standard to become more popular but that is not sure.
+- OData is very complex and tries to cover every little need but because there is no Golang library we will need to modify existing libraries. Being a new ISO standard may help the standard to become more popular but that is not sure.
 
-GData maybe is the logic option but based on changes in version V3 to V4 seems GData is choosing an approach more similar to GraphQL asking new developers to stop using V3.
+- GData maybe is the logic option but based on changes in version V3 to V4 seems GData is choosing an approach more similar to GraphQL asking new developers to stop using V3.
 
-GraphQL this querying approach is more document querying/manipulation has a lot of potential but not sure it will be useful for us at this stage (retrieve data from SQL DB), but maybe in the long future, we way ended using GraphQL or GData V4 or similar for document manipulation.
+- GraphQL this querying approach is more document querying/manipulation has a lot of potential but not sure it will be useful for us at this stage (retrieve data from SQL DB), but maybe in the long future, we way ended using GraphQL or GData V4 or similar for document manipulation.
 
 
 
