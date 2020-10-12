@@ -50,7 +50,7 @@ Query Language allows the web client to hide the underlying storage query, with 
 
 There are many query languages that are widely used in Web development we will evaluate 6 more popularly:
 - FIQL
-- RDF
+- RQL
 - OData
 - GData
 - GraphQL
