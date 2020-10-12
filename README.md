@@ -57,7 +57,7 @@ There are many query languages that are widely used in Web development we will e
 •	GraphQL
 
 ### Feed Item Query Language - FIQL
-Developed by  Internet Engineering Task Force (IETF) Once of the oldest query (2007) languages, IETF replaced this language with RQL but still supported by RQL as a grammar alternative.
+Developed by  Internet Engineering Task Force (IETF) Once of the oldest query languages(2007), IETF replaced this language with RQL but still supported by RQL as a grammar alternative.
 
 License:https://tools.ietf.org/html/bcp78 (BCP-78)
 
