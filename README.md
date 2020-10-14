@@ -227,7 +227,7 @@ Or	|`,`	|`country==United%20States,browser==Firefox`
 
 Developed by Facebook and released in 2015 hosted by GraphQL Foundation now.
 
-License: not sure, seems Linux
+License: http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0
 
 Specification: http://spec.graphql.org/June2018/ (2018)
 
